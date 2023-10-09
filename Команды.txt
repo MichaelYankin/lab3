@@ -3,4 +3,10 @@ grep -rh '2023' ./labfiles/Пивоварение/tests | sed 's/-20;/;/' | awk 
 grep -rh '2023\|2022\|2021' ./labfiles/Криптозоология/tests | awk -F";" '{ if ($5 == 3) count++ } END {print count}' >> ./Криптозоология.txt
 grep -rh '2023\|2022\|2021' ./labfiles/Пивоварение/tests | awk -F";" '{ if ($5 == 3) count++ } END {print count}' >> ./Пивоварение.txt
 
-grep -rh 'YankinMI' ./labfiles/Криптозоология/tests | sed -e 's/;2\$/;3\$/' -e 's/;3\$/;4\$/' -e 's/;4\$/;5\$/' > ./new.txt
+grep -rl 'YankinMI' ./labfiles/Криптозоология/tests | xargs sed -i -e 's/;4$/;5/' -e 's/;3$/;4/' -e 's/;2$/;3/'
+grep -rl 'YankinMI' ./labfiles/Пивоварение/tests | xargs sed -i -e 's/;4$/;5/' -e 's/;3$/;4/' -e 's/;2$/;3/'
+
+sed -i '/\(YankinMI \)[0-1]*0[0-1]*/s/0/1/g' ./labfiles/Криптозоология/A-06-20-attendance
+sed -i '/\(YankinMI \)[0-1]*0[0-1]*/s/0/1/g' ./labfiles/Пивоварение/A-06-20-attendance
+
+vim ./labfiles/students/general/notes/YNames.log
