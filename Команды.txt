@@ -3,8 +3,8 @@ grep -rh '2023' ./labfiles/Пивоварение/tests | sed 's/-20;/;/' | sed 
 grep -rh '2023\|2022\|2021' ./labfiles/Криптозоология/tests | grep -c ';3$' >> ./Криптозоология.txt
 grep -rh '2023\|2022\|2021' ./labfiles/Пивоварение/tests | grep -c ';3$' >> ./Пивоварение.txt
 
-grep -rl '.*' ./labfiles/Криптозоология/tests | xargs sed -e '/\(YankinMI\).*;2$/s/.//g; /^$/d; /YankinMI/s/;4$/;5/g; /YankinMI/s/;3$/;4/g'
-grep -rl '.*' ./labfiles/Пивоварение/tests | xargs sed -e '/\(YankinMI\).*;2$/s/.//g; /^$/d; /YankinMI/s/;4$/;5/g; /YankinMI/s/;3$/;4/g'
+grep -rl '.*' ./labfiles/Криптозоология/tests | xargs sed -i '/\(YankinMI\).*;2$/s/.//g; /^$/d; /YankinMI/s/;4$/;5/g; /YankinMI/s/;3$/;4/g'
+grep -rl '.*' ./labfiles/Пивоварение/tests | xargs sed -i '/\(YankinMI\).*;2$/s/.//g; /^$/d; /YankinMI/s/;4$/;5/g; /YankinMI/s/;3$/;4/g'
 
 sed -i '/\(YankinMI \)[0-1]*/s/0/1/g' ./labfiles/Криптозоология/A-06-20-attendance
 sed -i '/\(YankinMI \)[0-1]*/s/0/1/g' ./labfiles/Пивоварение/A-06-20-attendance

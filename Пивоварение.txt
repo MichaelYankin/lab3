@@ -48,12 +48,8 @@ A-06;TretyakovAlO;5
 A-06;TretyakovAlO;5
 A-06;YankinMI;3
 A-06;YankinMI;3
-A-06;YankinMI;3
-A-06;YankinMI;3
 A-06;YankinMI;4
 A-06;YankinMI;4
-A-06;YankinMI;5
-A-06;YankinMI;5
 A-06;ZhidkikhYS;3
 A-06;ZhidkikhYS;4
 A-06;ZhidkikhYS;5
@@ -126,4 +122,4 @@ A-09;TutayevAA;3
 A-09;TutayevAA;3
 A-09;TutayevAA;4
 A-09;TutayevAA;5
-125
+123
