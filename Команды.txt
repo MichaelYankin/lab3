@@ -1,12 +1,12 @@
-grep -rh '2023' ./labfiles/Криптозоология/tests | sed 's/-20;/;/' | awk -F";" '{ if ($5 > 2) print $1","$2","$5}' | sort -t ";" -k1,2 > ./Криптозоология.txt
-grep -rh '2023' ./labfiles/Пивоварение/tests | sed 's/-20;/;/' | awk -F";" '{ if ($5 > 2) print $1","$2","$5}' | sort -t ";" -k1,2 > ./Пивоварение.txt
-grep -rh '2023\|2022\|2021' ./labfiles/Криптозоология/tests | awk -F";" '{ if ($5 == 3) count++ } END {print count}' >> ./Криптозоология.txt
-grep -rh '2023\|2022\|2021' ./labfiles/Пивоварение/tests | awk -F";" '{ if ($5 == 3) count++ } END {print count}' >> ./Пивоварение.txt
+grep -rh '2023' ./labfiles/Криптозоология/tests | sed 's/-20;/;/' | sed 's/20[0-9][0-9];[0-9]*;//' | grep -v ';2$' | sort -t ";" -k1,2 > ./Криптозоология.txt
+grep -rh '2023' ./labfiles/Пивоварение/tests | sed 's/-20;/;/' | sed 's/20[0-9][0-9];[0-9]*;//' | grep -v ';2$' | sort -t ";" -k1,2 > ./Пивоварение.txt
+grep -rh '2023\|2022\|2021' ./labfiles/Криптозоология/tests | grep -c ';3$' >> ./Криптозоология.txt
+grep -rh '2023\|2022\|2021' ./labfiles/Пивоварение/tests | grep -c ';3$' >> ./Пивоварение.txt
 
-grep -rl 'YankinMI' ./labfiles/Криптозоология/tests | xargs sed -i -e 's/;4$/;5/' -e 's/;3$/;4/' -e 's/;2$/;3/'
-grep -rl 'YankinMI' ./labfiles/Пивоварение/tests | xargs sed -i -e 's/;4$/;5/' -e 's/;3$/;4/' -e 's/;2$/;3/'
+grep -rl '.*' ./labfiles/Криптозоология/tests | xargs sed -e '/\(YankinMI\).*;2$/s/.//g; /^$/d; /YankinMI/s/;4$/;5/g; /YankinMI/s/;3$/;4/g'
+grep -rl '.*' ./labfiles/Пивоварение/tests | xargs sed -e '/\(YankinMI\).*;2$/s/.//g; /^$/d; /YankinMI/s/;4$/;5/g; /YankinMI/s/;3$/;4/g'
 
-sed -i '/\(YankinMI \)[0-1]*0[0-1]*/s/0/1/g' ./labfiles/Криптозоология/A-06-20-attendance
-sed -i '/\(YankinMI \)[0-1]*0[0-1]*/s/0/1/g' ./labfiles/Пивоварение/A-06-20-attendance
+sed -i '/\(YankinMI \)[0-1]*/s/0/1/g' ./labfiles/Криптозоология/A-06-20-attendance
+sed -i '/\(YankinMI \)[0-1]*/s/0/1/g' ./labfiles/Пивоварение/A-06-20-attendance
 
 vim ./labfiles/students/general/notes/YNames.log
